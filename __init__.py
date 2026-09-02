@@ -1,5 +1,5 @@
-def adicionar_contato(contatos, nome, telefone):
-    contatos.append({"nome": nome, "telefone": telefone, "favorito": False})
+def adicionar_contato(contatos, nome, telefone, email):
+    contatos.append({"nome": nome, "telefone": telefone, "email": email, "favorito": False})
     print(f"Contato {nome} adicionado com sucesso")
     return
 
@@ -13,9 +13,10 @@ def listar_contatos(contatos):
         print(f"{indice} - Nome: {contato['nome']}, Telefone: {contato['telefone']}, Favorito: {favorito}")
     return
 
-def editar_contato(contatos, indice, nome, telefone):
+def editar_contato(contatos, indice, nome, telefone, email):
     contatos[indice]['nome'] = nome
     contatos[indice]['telefone'] = telefone
+    contatos[indice]['email'] = email
     print(f"Contato {indice} editado com sucesso")
     return
 
@@ -44,7 +45,8 @@ while True:
         print("\nAdicionar contato:")
         nome = input("Digite o nome: ")
         telefone = input("Digite o telefone: ")
-        adicionar_contato(contatos, nome, telefone)
+        email = input("Digite o email: ")
+        adicionar_contato(contatos, nome, telefone, email)
     elif opcao == 2:
         print("\nLista de contatos:")
         listar_contatos(contatos)
@@ -53,7 +55,8 @@ while True:
         indice = int(input("Digite o índice do contato: "))
         nome = input("Digite o nome: ")
         telefone = input("Digite o telefone: ")
-        editar_contato(contatos, indice, nome, telefone)
+        email = input("Digite o email: ")
+        editar_contato(contatos, indice, nome, telefone, email)
     elif opcao == 4:
         print("\nFavoritar contato:")
         indice = int(input("Digite o índice do contato: "))
