@@ -13,6 +13,13 @@ def listar_contatos(contatos):
         print(f"{indice} - Nome: {contato['nome']}, Telefone: {contato['telefone']}, Favorito: {favorito}")
     return
 
+def listar_contatos_favoritos(contatos):
+    for indice, contato in enumerate(contatos, start=1):
+        if contato['favorito'] == True:
+            favorito = "Sim"
+            print(f"{indice} - Nome: {contato['nome']}, Telefone: {contato['telefone']}, Favorito: {favorito}")
+    return
+
 def editar_contato(contatos, indice, nome, telefone, email):
     contatos[indice]['nome'] = nome
     contatos[indice]['telefone'] = telefone
@@ -34,11 +41,12 @@ contatos = []
 
 while True:
     print("1 - Adicionar contato")
-    print("2 - Listar contatos")
-    print("3 - Editar contato")
-    print("4 - Favoritar contato")
-    print("5 - Excluir contato")
-    print("6 - Sair")
+    print("2 - Listar todos os contatos")
+    print("3 - Listar contatos favoritos")
+    print("4 - Editar contato")
+    print("5 - Favoritar contato")
+    print("6 - Excluir contato")
+    print("7 - Sair")
 
     opcao = int(input("Digite a opção: "))
     if opcao == 1:
@@ -66,4 +74,7 @@ while True:
         indice = int(input("Digite o índice do contato: "))
         excluir_contato(contatos, indice-1)
     elif opcao == 6:
+        print("\nLista de contatos favoritos:")
+        listar_contatos_favoritos(contatos)
+    elif opcao == 7:
         break
