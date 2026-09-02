@@ -1,0 +1,66 @@
+def adicionar_contato(contatos, nome, telefone):
+    contatos.append({"nome": nome, "telefone": telefone, "favorito": False})
+    print(f"Contato {nome} adicionado com sucesso")
+    return
+
+def listar_contatos(contatos):
+    for indice, contato in enumerate(contatos, start=1):
+        favorito = ""
+        if contato['favorito'] == True:
+            favorito = "Sim"
+        else:
+            favorito = "Não"
+        print(f"{indice} - Nome: {contato['nome']}, Telefone: {contato['telefone']}, Favorito: {favorito}")
+    return
+
+def editar_contato(contatos, indice, nome, telefone):
+    contatos[indice]['nome'] = nome
+    contatos[indice]['telefone'] = telefone
+    print(f"Contato {indice} editado com sucesso")
+    return
+
+def favoritar_contato(contatos, indice):
+    contatos[indice]['favorito'] = True
+    print(f"Contato {indice} favoritado com sucesso")
+    return
+
+def excluir_contato(contatos, indice):
+    contatos.pop(indice)
+    print(f"Contato {indice} excluído com sucesso")
+    return
+
+contatos = []
+
+while True:
+    print("1 - Adicionar contato")
+    print("2 - Listar contatos")
+    print("3 - Editar contato")
+    print("4 - Favoritar contato")
+    print("5 - Excluir contato")
+    print("6 - Sair")
+
+    opcao = int(input("Digite a opção: "))
+    if opcao == 1:
+        print("\nAdicionar contato:")
+        nome = input("Digite o nome: ")
+        telefone = input("Digite o telefone: ")
+        adicionar_contato(contatos, nome, telefone)
+    elif opcao == 2:
+        print("\nLista de contatos:")
+        listar_contatos(contatos)
+    elif opcao == 3:
+        print("\nEditar contato:")
+        indice = int(input("Digite o índice do contato: "))
+        nome = input("Digite o nome: ")
+        telefone = input("Digite o telefone: ")
+        editar_contato(contatos, indice, nome, telefone)
+    elif opcao == 4:
+        print("\nFavoritar contato:")
+        indice = int(input("Digite o índice do contato: "))
+        favoritar_contato(contatos, indice)
+    elif opcao == 5:
+        print("\nExcluir contato:")
+        indice = int(input("Digite o índice do contato: "))
+        excluir_contato(contatos, indice-1)
+    elif opcao == 6:
+        break
